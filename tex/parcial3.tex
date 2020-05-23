@@ -1,0 +1,514 @@
+\section{Cálculo Variacional}
+\subsection{Ecuación de Euler}
+\begin{proposition}
+  Sea $G$ un abierto en $\mathbb{R}^2$ y $f:G \to \mathbb{R}$ una función
+  continua tal que $D_1f$ existe y es continua en $G$. Suponga que $[\alpha,
+  \beta] \times [a,b] \subset G$. Para $x \in [\alpha,\beta]$, considere 
+  \begin{align*}
+    f_x:[a,b] &\to \mathbb{R} \\
+    y &\mapsto f(x,y)
+  \end{align*}
+  Y sea 
+  \begin{align*}
+    F: [\alpha, \beta] &\to \mathbb{R} \\
+    x &\mapsto \int^b_{a} f_x
+  \end{align*}
+  Entonces $\forall \, x \in [\alpha, \beta]$, $F'(x) $ existe y es igual 
+  \[
+    \int_a^b (D_1f)_x
+  \]
+  Donde 
+  \begin{align*}
+    (D_1f)_x : [a,b] &\to \mathbb{R} \\
+    y &\mapsto D_1(x,y)
+  \end{align*}
+\end{proposition}
+\begin{proof}
+ Claramente $f_x$ es continua. En consecuencia $\int_a^b f_x$ existe, y por ello
+ $F$ está definida. Considere un elemento $(x,y)$ de $[\alpha, \beta] \times
+ [a,b]$, si definimos
+ \begin{align*}
+   f^y: [\alpha,\beta] &\to \mathbb{R} \\
+   x &\mapsto f(x,y)
+ \end{align*}
+ Se tiene así que $(f^y)'(x) = D_1f(x,y)$.
+
+ Sean $\hat{x} \in [\alpha, \beta]$, $\hat{h} \neq 0$ y $\hat{x} + \hat{h} \in
+ [\alpha, \beta]$. Entonces
+ \[
+   F(\hat{x} + \hat{h}) - F(\hat{x}) = \int_a^b f_{\hat{x} + \hat{h}} - \int_a^b
+ f_{\hat{x}} = \int_a^b f_{\hat{x} + \hat{h}} - f_{\hat{x}} 
+ \]
+ Por otra parte, del teorema del valor medio existe $c \in (\hat{x},\hat{x} +
+ \hat{h})$
+ \[
+   (f^y)'(c) = \frac{f^y(\hat{x} + \hat{h}) - f^y(\hat{x})}{\hat{h}}
+ \]
+ $c$ entonces  se puede escribir como $c = \hat{x} + \theta\hat{h}$ con $\theta
+ \in (0,1)$. Además $\theta$ depende de $y$
+  De ésta manera
+  \begin{align*}
+    f(\hat{x} + \hat{h}, y) - f(\hat{x}, y) &= \hat{h}(f^y)'(c) \\ 
+    &= \hat{h}D_1f(c,y) \\ 
+    &= \hat{h}D_1f(\hat{x} + \theta \hat{h},y) 
+  \end{align*}
+  Como $D_1f$ es continua en un compacto, dado $\epsilon > 0$
+  $\exists \, \delta > 0$ tal que 
+  \[
+    |D_1f(c, y) - D_1(\hat{x}, y)| < \frac{\epsilon}{ b-a}
+  \]
+  si
+  \[
+    |\hat{h}| < \epsilon
+  \]
+  Considere la función 
+  \begin{align*}
+    g: [a,b] &\to \mathbb{R}^2 \\
+    y &\mapsto (c,y)
+  \end{align*}
+  De lo cual se tiene
+  \[
+    f_{\hat{x} + \hat{h}} - f_{\hat{x}} = \hat{h} f \circ g
+  \]
+  Así
+  \begin{align*}
+    \frac{F( \hat{x} + \hat{h}) - F(\hat{x})}{\hat{h}} &= \int_a^b (D_1
+    f)_{\hat{x}} \\ 
+    \big| \frac{F( \hat{x} + \hat{h}) - F(\hat{x})}{\hat{h}} - \int_a^b (D_1
+    f)_{\hat{x}} &\leq \int_a^b \big| D_1f\circ g - (D_1f)_{\hat{x}} \big|
+  \end{align*}
+  Así se puede finalmente concluir 
+  \[
+    \lim_{\hat{h} \to 0} \frac{F(\hat{x} + \hat{h}) - F(\hat{x})}{\hat{h}}
+  \]
+  existe y es igual a $\int_a^b (D_1 f)_{\hat{x}}$, y dado el hecho que $D_1f$
+  es uniformemente continua, la derivada existe y es continua.
+\end{proof}
+\begin{lemma}
+  Sea $f: [a, b] \to \mathbb{R}$ una función continua, tal que
+  \[
+    \int_a^b f \eta = 0
+  \]
+ para toda función $\eta: [a,b] \to \mathbb{R}$ continua que satisface
+ $\eta(a) = \eta(b) = 0$. Entonces $f(x) = 0 \quad \forall \, x \in [a, b]$
+
+\end{lemma}
+\begin{proof}
+  Suponga que existe $c \in [a,b]$ tal que $f(c) \neq 0$. Suponga que $f(c)>0$.
+  Como $f$ es continua, para $\epsilon =f(c)$ existe $\delta > 0 $ tal que 
+  \[
+    | f(x) - f(c) | < \epsilon \mbox{ si } | x-c| < \delta%
+    \mbox{ y } x \in [a, b]
+  \]
+  Así si $x \in [a, b] \cap ( c- \delta, c + \delta)$, entonces $-\epsilon <
+  f(x) - f(c)$. Con lo que $0 < f(x)$. Existen entonces $a', b'$; $a'<b'$. tales
+  que $(a',b') \subset (a,b) \cap (c-\delta, c+ \delta)$. Considere entonces la
+  función $\eta: [a,b] \to \mathbb{R}$ definida en la siguiente forma
+  \[
+    \eta(x) =%
+    \begin{cases}
+      (b'-x)(x-a') &\mbox{ si } x \in [a',b'] \\ 
+      0 &\mbox{ si } x \notin [a',b']  
+    \end{cases}
+  \]
+  $\eta$ es continua. Además que $\eta(a)= \eta (b) = 0$. En consecuencia
+  \[
+    \int_a^b = 0
+  \]
+  Sin embargo $f\eta$ es estrictamente mayor que 0 en el abierto $(a',b')$ y
+  cero en el resto de su dominio, finalmente
+  \[
+    \int_a^b f\eta > 0
+  \]
+  Lo cual es una contradicción
+
+\end{proof}
+
+Sea $F: G \subset \mathbb{R}^3 \to \mathbb{R}$ una función diferenciable en el
+abierto $G$. Suponga que $[a,b] \subset \Pi_1(G)$, siendo
+\begin{align*}
+  \Pi : \mathbb{R}^3 &\to \mathbb{R} \\
+  (x,y,z) &\mapsto x
+\end{align*}
+Sean $c, d \in \mathbb{R}$. $C$ el conjunto
+\[
+  \{f: [a,b] \to \mathbb{R} \, | \, f \mbox{ es de clase} C^2; f(a) = c%
+  , f(b) = d, \, (x, f(x), f'(x)) \in G \}
+\]
+Dado $f \in C$. Sean
+\begin{align*}
+  g_f : [a, b] &\to G \\
+  x &\mapsto (x, f(x), f'(x)) \\
+  h_f : F \circ g_f
+\end{align*}
+Considere finalmente la función
+\begin{align*}
+  I: C &\to \mathbb{R} \\
+  f &\mapsto \int_a^b h_f
+\end{align*}
+El propósito del cálculo variacional es determinar un elemento $\phi \in C$ tal
+que $I(\phi)$ sea máximo o mínimo.
+\begin{proposition}[Euler 1977]
+ Una condición necesaria para que $u \in C$ sea un extremo de $I$, es que se
+ cumpla la siguiente identidad
+ \[
+   D_2F(x,u(x),u'(x)) - \frac{\diff}{\diff x} [D_3 F(x, u(x), u'(x)]  
+ \]
+\end{proposition}
+\begin{proof}
+ Asuma que $u \in C$ es un extremo de $I$.
+ Sea 
+ \begin{align*}
+   \eta : [a,b] &\to \mathbb{R}
+ \end{align*}
+ una función de clase $C^2$ tal que $\eta(a) = \eta(b) = 0$. Para probar ésta
+ proposición, basta probar que:
+ \[
+   \int_a^b \eta \big[ D_2F(x,u(x),u'(x)) - \frac{\diff}{\diff x}%
+ [D_3 F(x, u(x), u'(x)] \, \big]
+ \]
+ Sea $\hat{\mathbb{R}} = \{ \, \epsilon \in \mathbb{R} \, | \, u + \epsilon\eta
+   \in C \}$. Entonces $\{ u + \epsilon\eta \, | \, \epsilon \in
+ \hat{\mathbb{R}}\} \in C$.
+
+ Considere las funciones 
+ \begin{align*}
+   \hat{f}: \hat{\mathbb{R}} &\to C \\
+   \epsilon  &\mapsto u + \epsilon\eta \\
+   L : [a,b] \times \hat{\mathbb{R}} &\to \mathbb{R}^3 \\
+   (x, \epsilon) &\mapsto g_{\hat{f}(\epsilon)}(x) = (x, \hat{f}(x),%
+   \hat{f}'(x))
+ \end{align*}
+ Se tiene así la función:
+ para cada $\epsilon \in \hat{\mathbb{R}}$, considere la función
+ \begin{align*}
+   (F \circ L): [a,b] &\to \mathbb{R} \\
+   x &\mapsto (F \circ L)(x, \epsilon)
+ \end{align*}
+ Considere así mismo la función
+ \begin{align*}
+ G_{\eta} : \hat{\mathbb{R}} &\to \mathbb{R} \\
+ \epsilon &\mapsto I(\hat{f}(\epsilon)) 
+ \end{align*}
+ Se tiene que $G_{\eta}(\epsilon) = \int_a^b h_{\hat{f}(\epsilon)}$
+
+ Como $F\circ L$ y $(F \circ L)_{\epsilon}$ son continuas, la proposición
+ anterior, implica que $G'_{\eta}(\epsilon)$ existe y es igual a $\int_a^b
+ D_2(F\circ L)_{\epsilon}$.
+
+ Por otra parte, 
+ \[
+   D(F\circ L)(x, \epsilon) = DF(L(x, \epsilon)) \circ DL(x, \epsilon)
+ \]
+ Así 
+ \[
+   D_2 (F \circ L) = \eta(x)D_2F(L(x, \epsilon)) + \eta'(x)%
+ D_3F(L(x,\epsilon)) 
+ \]
+ Tenemos entonces que 
+ \[
+   G'_{\eta}(\epsilon) = \int_a^b%
+   D_2 (F \circ L) = \eta(x)D_2F(L(x, \epsilon)) + \eta'(x)%
+ D_3F(L(x,\epsilon))
+ \]
+ Utilizando el método de integración por partes se tiene:
+ \[
+   G_{\eta}'(\epsilon) = \int_a^b \eta(x)\big[D_2(F\circ L(x,\epsilon)) -%
+   \frac{\diff}{\diff x} [D_3 (F\circ L(x,\epsilon))] \big] 
+ \]
+ al ser $\eta(a) = \eta(b) = 0$.
+ Como $G_{\eta}(0) = I(u)$.  0 es un extremo de $G_{\eta}$. Así $G_{\eta}' = 0$.
+ Entonces
+ \[
+   \int_a^b \eta \big[ D_2F(x,u(x),u'(x)) - \frac{\diff}{\diff x}%
+ [D_3 F(x, u(x), u'(x)] \, \big]
+ \]
+
+\end{proof}
+
+\subsection{Geodésicas en la esfera}
+Sean $P_1$, $P_2$ dos puntos en la esfera $S^2$. Sea $P: [u,v] \to \mathbb{R}^3$
+una curva regular cuya traza está contenida en la esfera, tal que $P(u) = P_1,
+P(v) = P_2$.
+Utilizando coordenadas esféricas se puede escribir
+\begin{align*}
+  x(t) &= \cos \theta (t) \cos \phi(t) \\
+  y(t) &= \cos \theta (t) \sin \phi(t) \\
+  z(t) &= \sin \theta(t) 
+\end{align*}
+
+La longitud de la curva es entonces
+\[
+  L_P = \int_u^v ||P'(t)||
+\]
+
+Se tiene entonces que 
+\[
+  ||P'(t)|| = [\theta'(t)^2 + \phi'(t)^2\sin^2\theta(t)]^{1/2}
+\]
+
+Si $\theta$ es inyectiva, podemos escribir
+\[
+  L_P = \int_u^v \theta'(t) \sqrt{1 + \big[\frac{\phi'(t)}{\theta'(t)}\big]^2%
+    \sin^2\theta(t)}
+\]
+Entonces, utilizando el primer teorema de sustitución
+\begin{align*}
+L_P = \int_u^v G(t) &= \int_{\theta^{-1}(\alpha)}^{\theta^{-1}(\beta)} \\
+                    &=\int_{\alpha}^{\beta} G (\theta^{-1}(x))(\theta^{-1})'(x) \\
+                    &= \int_{\alpha}^{\beta} \big[ 1 +%
+                      \phi'(\theta^{-1}(x))^2(\theta^{-1})'(x)^2\sin^2x%
+                    \big]^{1/2}
+\end{align*}
+Considere entonces a $f = $
+\begin{align*}
+  F: \mathbb{R}^3 &\to \mathbb{R} \\
+(x,y,z) &\mapsto (1+ x^2\sin^2x)^{1/2}
+\end{align*}
+Se tiene así la función:
+\begin{align*}
+  h_f = F \circ g_f: [\alpha, \beta] \to \mathbb{R} 
+\end{align*}
+Así la ecuación de Euler se reduce en éste caso:
+\[
+  \frac{\diff}{\diff x} [D_3 (F(x,f(x),f'(x)))] = 0$
+\]
+Así $\exists C \in \mathbb{R}$ tal que 
+\[
+  C = D_3 F(x,f(x),f'(x))
+\]
+Por lo cual 
+\[
+  \frac{f'(x) \sin^2 x}{\big[ 1 + f'(x)^2 \sin^2x\big]^{1/2}} = C
+\]
+Lo anterior constituye una condición necesaria para que $P$ sea una geodésica de
+$S^2$.
+
+Sea $\Phi = f'$.
+Se tiene entonces que 
+
+\[
+  \Phi^2 \sin^2x (\sin^2 x - C^2) = C^2
+\]
+Observe que $|C|<1$
+
+%%%Añadir lo del inicio
+Así
+\[
+  \Phi = \frac{C}{\sin x [\sin^2 x - C^2]^{1/2}}
+\]
+Reemplazando $\sin^2 x$ se tiene
+\begin{align*}
+  f' &= \frac{C}{\sin^2x[1-C^2(1+ \cot^2x)]^{1/2}} \\
+     &= \frac{C(\cot x)'}{1-C^2 - C^2\cot^2 x]^{1/2}} \\
+  f  &= \arccos \frac{C\cot x}{\sqrt{1-C^2}} + C_1  \\
+  &= \arccos[ C_2 \cot x] +C_1   
+\end{align*}
+Como $x=\theta$, se concluye:
+\[
+  \cos(f(\theta) - C-1) =  C_2 \cot \theta
+\]
+ó bien
+\[
+  A\cos f(\theta) + B \sin f(\theta) =  \ctg \theta
+\]
+Multiplicando ambos miembros por $\sin \theta$, se tiene
+\begin{align*}
+  A\sin\theta \cos f(\theta) + B \sin \theta \sin f(\theta) &= \cos \theta \\
+  A\sin\theta \cos \phi + B \sin\theta\sin\phi &= \cos \theta 
+\end{align*}
+o bien en coordenadas cartesianas
+\[
+  Ax + By = z
+\]
+Es decir que la curva se encuentra en la intersección de una superficie que
+contiene al origen
+
+Charles Fox. 
+
+\begin{problem}
+  ~\begin{enumerate}
+    \item Verifique que si $D_1F = 0$, entonces existe $c \in \mathbb{R}$ tal que
+      \[
+        F(x,u,u') - u' D_3F(x,u,u') =C
+      \]
+    \item Verifique que la hélice $f(t) = (\cos t, \sin t, at)$ satisface la
+      ecuación de Euler para ser una geodésica del cilindro circular. 
+
+  \end{enumerate}
+
+\end{problem}
+
+
+Considerando al conjunto $C$ definido como antes, y a la función $I$ de la misma
+forma.
+Sea $u$ un extremo de $I$
+\begin{align*}
+  g_u : [a,b] &\to \mathbb{R}^3 \\
+  x &\mapsto (x,u(x),u'(x))
+\end{align*}
+Sea $H = (D_3F)\circ g_u$. Para cada $x \in [a,b]$ se tiene:
+\[
+  DH(x) = D (D_3F(g_u(x)) \circ D g_u(x)
+\]
+Así 
+\[  
+  H'(x) = D_{13}F(g_u(x)) + u'(x)D_{23}F(g_u(x)) + u''(x)D_{33}F(g_h(x))
+\]
+Como $\frac{\diff}{\diff x} H(x) = H'(x)$.
+
+En consecuencia la ecuación de Euler puede escribirse en la forma:
+\[
+  -D_2F(x,u(x),u'(x)) + D_{13}F(x,u(x),u'(x)) + u'(x)D_{23}F(x,u(x),u'(x)%
+  + u''(x)D_{33}F(x,u(x),u'(x))
+\]
+Considere una función $F: G \subset \mathbb{R}^{2n +1} \to \mathbb{R}$
+diferenciable.
+Suponga que $[a,b] \subset \Pi_1(G)$
+Sean
+\begin{align*}
+  C &= \{ f:[a,b] \to \mathbb{R} \, | \, f \in C^2, f(a) = c, f(b)=d \\
+    &= (x,f(x), f'(x)) \in G \quad \forall \, x \in [a,b] \} \\
+    f \in C \quad ; \quad g_f [a,b] &\to G  \\
+    x &\mapsto (x,f(x), f'(x)) \\
+    h_f = F \circ g_f : [a,b] &\to \mathbb{R} \\
+    x &\mapsto F(x, f(x), f'(x))
+\end{align*}
+Veamos que $h_f$ es continua. Así podemos considerar la función
+\begin{align*}
+  I:  C &\to \mathbb{R} \\
+  f &\mapsto \int_a^b h_f
+\end{align*}
+Suponga que $u \in C$ es un extremo de $I$.
+Sea $\eta: [a,b] \to \mathbb{R}^n$ una función de clase $C^2$ tal que
+$\eta(a)=\eta(b) = 0$ y sea $\hat{\mathbb{R}} = \{ \epsilon \in \, | \, u +
+\epsilon\eta \in C \}$. 
+Considere las funcióne 
+\begin{align*}
+  \hat{f} : \hat{\mathbb{R}} &\to C \\
+  \epsilon &\mapsto u + \epsilon \eta \\
+  G_{\eta}: \hat{\mathbb{R}} &\to \mathbb{R} \\
+  \epsilon &\mapsto I(\hat{f}(\epsilon)) = \int_a^bh_{\hat{f}(\epsilon)}
+\end{align*}
+Sea también:
+\begin{align*}
+  L : [a,b] \times \hat{\mathbb{R}} &\to \mathbb{R}^{2n +1} \\
+  (x, \epsilon)& \mapsto g_{\hat{f}(\epsilon)}(x) \\
+  F \circ L : [a,b] \times \hat{\mathbb{R}} &\to \mathbb{R} \\
+  (x, \epsilon)& \mapsto F \circ g_{\hat{f}(\epsilon)}(x)
+\end{align*}
+Dado $\epsilon \in \hat{\mathbb{R}}$, se tiene la función 
+\begin{align*}
+  h_{\hat{f}(\epsilon)} = (F\circ L)_{\epsilon} : [a,b] &\to \mathbb{R} \\
+    x &\mapsto F\circ L (x,\epsilon)
+\end{align*}
+Se tiene entonces:
+\[
+  G_{\eta}(\epsilon) = \int_a^b (F \circ L)_{\epsilon}
+\]
+La proposición 21 implica que
+\[
+  G'_{\eta}(\epsilon) = \int_a^b [D_2 (F \circ L)]_{\epsilon}
+\]
+Veamos que 
+\[
+  [D F(L(x,\epsilon))] =%
+  \begin{bmatrix}%
+    D_1F(x,\epsilon) \ldots D_{2n +1}%
+  \end{bmatrix}
+\]
+y
+\[
+  [D L(x, \epsilon)] =%
+  \begin{bmatrix}%
+    1 & 0 \\
+    u_1'(x) + \epsilon\eta_1'(x) & \eta_1'(x) \\
+    \vdots & \vdots \\
+    u_n'(x) + \epsilon\eta_n'(x) & \eta_n'(x) \\
+    u_1''(x) + \epsilon\eta_1''(x) & \eta_1''(x) \\
+    \vdots & \vdots \\
+    u_n''(x) + \epsilon\eta_n''(x) & \eta_n''(x)
+  \end{bmatrix}
+\]
+Así 
+\[
+  [D_2(F\circ L)]_{\epsilon} = \eta_1(x)D_2F(L(x,\epsilon)) + \ldots%
+  + \eta_n(x)D_{n+1}F(L(x,\epsilon)) +%
+  \eta_1'(x)D_{n+2}F(L(x,\epsilon)) +\ldots %
+  +\eta_n'D_{2n+1}F(L(x,\epsilon))
+\]
+Con lo cual, integrando por partes tenemos
+\[
+  G'_{\eta}(\epsilon) = \int_a^b \sum_{i=1}^n \eta_i[(x)D_{i+1}F(L(x,\epsilon)) -%
+  \frac{\diff}{\diff{x}}D_{i+n+1}F(L(x,\epsilon))
+\]
+En particular $G_{\eta}$ tiene un punto crítico en 0. Así
+\[
+  0 = G'_{\eta}(\epsilon) = \int_a^b \sum_{i=1}^n \eta_i[(x)D_{i+1}F(L(x,0)) -%
+  \frac{\diff}{\diff{x}}D_{i+n+1}F(L(x,0))
+\]
+Como $\eta$ es una función de clase $C^2$ con $\eta(a)=\eta(b)=0$ arbitraria,
+podemos tomar a $\eta^k_k = \eta_k$. $\eta_k^i=0$ para $i \neq k$. Con lo cual
+se tiene
+\[
+  0 = G'_{\eta_k}(\epsilon) = \int_a^b  \eta_k[(x)D_{k+1}F(L(x,0)) -%
+  \frac{\diff}{\diff{x}}D_{k+n+1}F(L(x,0))
+\]
+Así, del lema de la proposición 21, se conluye:
+\[
+  D_{k+1} F(x, u(x), u'(x)) - \frac{\diff}{\diff x} D_{k+n+1}F(x,u(x),u'(x)) = 0
+\]
+Con lo cual se muestra lo siguiente:
+\begin{proposition}
+ Sean $F$ definido como anterior, $C$ el conjunto de funciones anteriores y $u
+ \in C$ tal que $u $ es un extremo de $I$, entonces 
+\[
+  D_{k+1} F(x, u(x), u'(x)) - \frac{\diff}{\diff x} D_{k+n+1}F(x,u(x),u'(x)) = 0
+\]
+\end{proposition}
+Herman  H . Goldstine A History of the calculus of Variations from the 17th
+through the 19th century.
+\section{Principio de Hamilton}
+El principio de Hamilton dice que
+para cualquier sistema físico descrito en términos de las $n$ coordenadas
+generalizadas cuales definen las posiciones y velocidades de las partículas que
+lo comprenden, sobre cualquier conjunto de restricciones; la integral de la
+energía cinética menos la energía potencial respecto al tiempo en la trayectoria
+que sigue la partícula, es mínima.
+
+Así, tratándose de una partícula cuyo movimiento está descrito por sus tres
+componentes, infiere la expresión
+\[
+  \int_{t_0}^{t_1} T(t,x(t),x'(t))-V(t,x(t),x'(t)) \diff t = \int_{t_0}^{t_1}%
+  L(t,x,x') \diff t
+\]
+Donde a la función $L$ se le denomina función Lagrangiana. Como $L$ es de la
+forma en que se deduce la ecuación de Euler de las proposiciones anteriores. 
+Así se deduce que la función $x(t)$ debe ser un extremo de
+\begin{align*}
+  I: C &\to \mathbb{R} \\
+  f &\mapsto \int_{t_1}^t h_f
+\end{align*}
+Tomando $F = L$. Así de la proposición 23 se desprende la exptesión:
+\[
+  D_{k+1}L(t,x(t),x'(t)) - \frac{\diff}{\diff t} D_{3+k+1} L(t,x(t),x'(t))
+\]
+Las ecuaciones anteriores son las ecuaciones de Lagrange para la partícula.
+En general se escriben:
+\[
+  \frac{\partial L}{\partial x_k} - \frac{\diff}{\diff t} \frac{\partial%
+  L}{\partial x'_k} = 0
+\]
+\section{La curva braquistocrona} 
+...
+
+Si $s(t)$ es la distancia recorrida por la partícula en el tiempo, entonces $v =
+s'(t)$. Por el teorema de la función 
+
+...
+
+y considerando a $s$ como función de $x$, $(s(0), s(x_0) = L)$ 
+
+vblsd
+
+

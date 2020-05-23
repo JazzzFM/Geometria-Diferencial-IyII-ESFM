@@ -1,0 +1,686 @@
+7-ago-2019
+\section{Curvas regulares}
+\begin{proposition}
+  Sea $f:A \subset \mathbb{R}^n \to \mathbb{R}^,$ una función que sea continua e
+  inyectiva. Si $A$ es compacto, entonces $f$ es un homeomorfismo sobre su
+  imagen, es decir, $f: A \to f(A)$ es una biyección continua cuya inversa es
+  continua.
+\end{proposition}
+\begin{proof}
+\end{proof}
+\begin{definition}
+  Una función $f$ es localmente inyectiva en $X$ si $\forall \, x \in X \quad
+  \exists \, \delta > 0 $ tal que $f:E(x,\delta) \to \mathbb{R}^n$ es inyectiva
+  sobre su imagen. Se define de forma análoga, reemplazando ``inyectiva'' por ``un
+  homeomorfismo'' el que una función sea localmente un homeomorfismo.
+\end{definition}
+\begin{proposition}
+  Sea $f: I \to \mathbb{R}^n$ continua, localmente inyectiva. Entonces $f$ es
+  localmente un homeomorfismo. 
+\end{proposition}
+La demostración es consecuencia de la proposición 1.
+\begin{proposition}
+  Sea $f:D \subset \mathbb{R} \to \mathbb{R}^n$, con $n>1$. Si $f$ es un
+  homeomorfismo sobre su imagen, entonces $\mathring{f(D)} = \emptyset$.
+\end{proposition}
+\begin{proof}
+  Procediendo por contradicción suponga que $\mathring{f(D)} \neq \emptyset$,
+  así, $\exists \, u \in f(D)$ tal que $\exists \, \delta > 0$ con
+  $E(u,\delta)\subset f(D)$. Sea $G = E(u,\delta)$ y sea $J = f^{-1}(G)$. $G$ es
+  conexo en $\mathbb{R}^n$. Al ser $f^{-1}$ continua, $J$ es conexo en
+  $\mathbb{R}$, además $\mathring{J} \neq \emptyset$. Considere a $x\in
+  \mathring{J}$ y a $v = f(x)$. Veamos ahora que la imagen inversa de dicho
+  conjunto excluyendo a $x$, es decir, $f^{-1}(G\setminus\{v\}) = J \setminus
+  \{x\}$ es conexo en $\mathbb{R}$. Sin embargo, $x \in \mathring{J}$, así $J
+  \setminus \{x\}$ no es conexo, llegando así a una contradicción que parte de
+  suponer que $\mathring{f(D)}\neq \emptyset$.
+\end{proof}
+\begin{lemma}
+  Sean $A,B$ subconjuntos de $\mathbb{R}^n$, $A$ cerrado. Si $\mathring{A} =
+  \mathring{B} = \emptyset$ entonces $\mathring{(A\cup B)} = \emptyset$.
+\end{lemma}
+\begin{proof}
+  Suponga que 
+\end{proof}
+9-ago-2019
+\begin{proposition}
+  Sea $f: I \to \mathbb{R}^n$ una función continua localmente inyectiva,
+  entonces $int(f(I)) = \emptyset$. 
+\end{proposition}
+\begin{proof}
+  La proposición 2 implica que $f$ es localmente un homeomorfismo, ees decir,
+  para cada $c \in I, \exists \delta_x > 0$ tal que $f$ restringido a  $E(x,
+  \delta_x$ es un homeomorfismo sobre su imagen. La proposición 3 implica que
+  $int[f(E(x,\delta_x)] = \emptyset$. Para cada $x \in I$ sea $U_x = E (x,
+  \frac{\delta_x}{2}$  Así el conjunto de los $U_x$ forma una cubierta abierta de
+  $I$. Como $I$ es compacto entonces existe una subcubierta finita en la familia
+  $\{U_x\}$. Considerela $\{U_{x_i}\} i \leq k$. Con  $I \subset \bigcup_{i=1}^k
+  U_{x_i} \subset \overline{\bigcup_{i=1}^k U_{x_i}}$.
+  Así 
+  \begin{align*}
+    I &= I \cap \bigcup_{i=1}^k \overline{U_{x_i}} \\
+    f(I) &= f(I \cap \bigcup_{i=1}^k \overline{U_{x_i}}) \\
+         &=f( \bigcup_{i=1}^k I \cap \overline{U_{x_i}}) \\
+         &=\bigcup_{i=1}^kf(  I \cap \overline{U_{x_i}})
+  \end{align*}
+  Observe que: 
+  \begin{align*}
+    I \cap \overline{U_{x_i}} &\subset I\cap E(x,\delta_x) \\
+    f(I \cap \overline{U_{x_i}}) &\subset f(I\cap E(x,\delta_x))
+  \end{align*}
+  Veamos que cada $f(I \cap \overline{U_{x_i}})$ es compacto en $\mathbb{R}^n$ y cada
+  $int[f(I \cap \overline{U_{x_i}})]$
+\end{proof}
+\begin{definition}
+  Sea $I$ un intervalo cerrado, se dice que una función $f: I \to \mathbb{R}^n$
+  siendo $n >1$ es una curva regular si se cumplen dos condiciones:
+  \begin{enumerate}
+    \item $f'$ está definida y es continua en $I$.
+    \item $f'(t) \neq 0, \quad \forall t \in I$  
+  \end{enumerate}
+\end{definition}
+\begin{proposition}
+  Sea $f:I \to \mathbb{R}^n$ una curva regular, entonces $f(I)$ no tiene puntos
+  interiores.
+\end{proposition}
+\begin{proof}
+  De acuerdo con la proposición 4, basta probar que $f$ es continua y localmente
+  inyectiva. $f$ es continua, por ser deribable. Para probar que $f$ es
+  localmente inyectiva, tomemos dos $t_0,t_1$, distintos arbitrarios en $I$.
+  Asuma $t_0<t_1$
+  Veamos que podemos escribir
+  \[
+    f(t_0) - f(t_1) = (f_1(t_0) - f_1(t_1),\ldots,f_n(t_0) - f_n(t_1))
+  \]   
+  Dado $i \in \{1, \ldots, n\}$, por el teorema del valor medio existe $\zeta_i
+  \in (t_0, t_1)$ tal que 
+  \[
+    f_i(t_0)- f_i(t_1) = f_i'(\zeta_i)(t_1-t_0). 
+  \]
+  Sea $u=(f'_1(z_1), \ldots, f'_n(z_n))$. Entonces $f(t_0)-f(t_1) = u(t_0-t_1)$ 
+  Veamos que para cada $\epsilon > 0, \exists \delta >0$ que no depende ni de
+  $t_0$ ni de $t_1$ tal que si $|t_0-t_1|<\delta$, entonces $u \in E(f'(t_0),
+  \epsilon)$. Podemos mostrar éste hecho de la siguiente forma:
+  \[
+    ||f'(t_0) - u || = \big[ \sum_{i=1}^n [f'_i(t_0)-f'_(\zeta_i)] \big]
+  \]
+  Por ser $f$ una curva regular $f'_i$ es continua en $I$ y por ser $I$ un
+  compacto $f'_i$ es uniformemente continua. Así dado $\epsilon  > 0  \, \exists
+  \delta_i > 0$ tal que $|t_0 - t_1| < \delta_i $ implica que $||f_i(t_0) -f_i(t_1)||
+  < \epsilon$. Sea $\delta = \min\{\delta_i\}$. Veamos que $\delta$ solamente
+  depende de $\epsilon$. Si $|t_0 - t_1|< \delta$ se tiene $|t_0 -
+  \zeta_i|<\delta$ y así $|f'_i(t_0)-f'_i(\zeta_i)| < \frac{\epsilon}{\sqrt{n}}
+  \quad \quad \forall i \in \{1,\ldots,n\}$. Así vemos que:
+  \begin{align*}
+    ||f'(t_0)- u||^2 < \sum_{i=1}^n \frac{\epsilon^2}{n} &= \epsilon^n \\
+    ||f'(t_0)- u|| &= \epsilon
+  \end{align*}
+  Con lo anterior vemos que el hecho enunciado es cierto. 
+  Por ser $f$ una curva regular $f' (t_0) \neq 0$.  Así existe $\epsilon> 0$ tal
+  que  $0 \notin E(f'(t_0,t_1))$ Así 
+\end{proof}
+\begin{remark}
+  Se ha probado que toda curva regular es localmente inyectiva. 
+\end{remark}
+\begin{remark}
+  Dada una curva regular $f: I \to \mathbb{R}$  $f(I)$ se denomina la traza de
+  la curva.
+\end{remark}
+12-agosto-2019
+Considere una función $f: [a,b] \to \mathbb{R}^m$ Sea $mathfrak{P}$ el conjunto
+de particiones de $[a,b]$ y sea $P \in \mathfrak{P}; P = \{t_0, \ldots. t_k\}$
+con $a =t_0 < t_1 < \ldots < t_k = b$. $P$ determina la poligonal cuyos
+segmentos son $\overline{f(t_i)f(t_{i+1})}$ definido como $\{f(t_i) + \alpha
+[f(t_{i+1}-f(t_i) ])\}$ y se define $L_P$ como la longitud de tal poligonal de
+la siguiente forma:
+\[
+  L_P = \sum_{i=0}^{k-1} || f(t_i)-f(t_{i+1}) ||
+\]
+Si el conjunto $\{L_P | P \in \mathfrak{P}\}$ es acotado superiormento, entonces
+entonces se dice que el supremo de tal conjunto denotado por $L$  es la longitud
+de $f$. En caso de que ésto ocurra, entonces diremos que $f$ es rectificable
+\begin{lemma}
+  Sea $f:[a,b] \to \mathbb{R}^n$ una función, sean $P_1, P_2 \in \mathfrak{P}$.
+  Si $P_1$ es un refinamiento de $P_2$, entonces $L_{P_2} \leq L_{P_1}$. 
+\end{lemma}
+\begin{proof}
+  Sea $m$ el número de elementos de $P_1 \setminus P_2$. Procediendo por
+  inducción sobre $m$. Tenemos que si $m = 1$ $P_1 = P_2 \cup \{t\}$. Veamos que
+  si $P_2 = \{t_0, \ldots, t_k\}$
+  (ahorita completar)
+\end{proof}
+\begin{lemma}
+  Sea $g: [a,b] \to \mathbb{R}^n$ una función continua. Entonces $\quad \forall
+  \epsilon > 0, \exists \delta > 0$ tal que 
+  \begin{align*}
+    \mbox{si  } x,y_1,\ldots,y_n \in [a,b] \, \land \, |x-y_i| &< \delta,  \\
+    \mbox{entonces  } ||g(x) - (g_1(y_1),\ldots, g_n(y_n))|| &< \epsilon
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  Por ser $g$ continua, sus componentes $g_1, \ldots, g_n$ son también continuas
+  y por lo tanto uniformemente continuas dado que $[a,b]$ es un compacto.
+  Sea $\epsilon > 0$; sea $\epsilon' = \frac{\epsilon}{\sqrt{n}}$, entonces para
+  cada $i \in \{1,\ldots,n\}$ existe $\delta_i>0$ tal que $|g_i(x) -g(y_i)|<
+  \epsilon'$ si $|x-y_i| < \delta_i$. Sea $\delta = \min\{\delta_i\}$, entonces
+  se tiene que:
+  \begin{align*}
+    ||g(x) - (g_1(y_1), \ldots, g_n(y_n))|| &= \big[ \sum_{i=1}^n (g_i(x) - g_i(y_i))^2\big] \\
+                                            &< \big[\frac{\epsilon^2}{n}\big]^{1/2} = \epsilon
+  \end{align*}
+\end{proof}
+Del teorema 7.4.5 de la introducción al análisis real de Bartle. Se
+tiene que
+\begin{proposition*}
+  $\quad \forall \epsilon > 0, \, \exists \delta > 0$ tal que si $P \in \mathfrak{P}$
+  y $||P|| < \delta$ entonces:
+  \[
+    \big| \int_a^b g - S_P \big| < \epsilon
+  \]
+  Para cada suma de Riemman $S_P$
+\end{proposition*}
+\begin{proposition}
+  Sea $f: [a,b] \to \mathbb{R}^n$. Si $f'$ está definida y es continua en
+  $[a,b]$, entonces $f$ es rectificable y 
+  \[
+    L = \int_a^b ||f'||
+  \]
+\end{proposition}
+\begin{proof}
+  Veamos que $\int_a^b ||f'||$ está definida al ser $||f'||$ contínua. 
+  Se verificará que $f$ es rectificable. sea $P= \{t_0, \ldots, t_k \}$ una
+  partición de $[a,b]$.
+  Veamos que 
+  \begin{align*}
+    L_P &= \sum_{i=1}^k ||f(t_i)- f(t_{i-1})|| \\
+        &= \sum_{i=1}^k (t_i - t_{i-1})\big[\sum_{j=1}^n f_j'(c_i^j)^2 \big]^{\frac{1}{2}}
+  \end{align*}
+  Cada $f_j'$ es acotada en $[a,b]$, por ser continua, así $\exists M_j$ tal que 
+  \[
+    f_j'(x) \leq M_j \quad \forall x \in [a,b] 
+  \]
+  Así
+  \begin{align*}
+    L_P &\leq \sum_{i=1}^k(t_i-t_{i-1})\sqrt{M_1^2 + \ldots + M_n^2}  \\
+        &= (b-a) \sqrt{M_1^2 + \ldots + M_n^2}
+  \end{align*}
+  lo cual muestra que $\{L_P | P \in \mathfrak{P} \}$ es acotado superiormente.
+  Así $f$ es rectificable.
+  Verifiquemos que $|L - \int_a^b ||f'||\,| < \epsilon \quad \quad \forall \epsilon>0
+  $.
+  Veamos que 
+  \[
+    |\int_a^b ||f'|| - L| = \int_a^b ||f'|| - S_P + S_P - L_P + L_P -
+    L|
+  \]
+  Por la desigualdad del triángulo:
+  \[
+    |\int_a^b ||f'|| - L| \leq |\int_a^b ||f'||\, - S_P| + |S_P - L_P| + |L_P -
+    L|
+  \]
+  Así basta probar que cada uno de los términos de la suma anterior es menor que
+  $\frac{\epsilon}{3}$
+  Por la referencia mencionada, existe $\delta > 0$ tal que  si $||P_1|| < \delta$
+  entonces:
+  \[
+    |\int_a^b ||f'||\, - S_P| < \frac{\epsilon}{3}
+  \]
+  Por otra parte como $L = \sup\{L_P\}$ entonces existe $P_2$ tal que:
+  \[
+    L_{P_2} -L < \frac{\epsilon}{3}
+  \]
+  Ahora dada una partición $P' = \{t_0, \ldots, t_k\}$ entonces
+  \begin{align*}
+    |S_{P'} - L_{P'} | &= \big| \sum_{i=1}^k(t_i - t_{i-1}) ||f'||(\zeta_i) -
+    \sum_{i=1}^k||f(t_i) - f(t_{i-1})||\,\big|  \\
+                       &= \big|\sum_{i=1}^k(t_i- t_{i-1})\big[ ||f'||(\zeta_i) -
+                       ||f'_1(c_i^j), \ldots, f'_n(c_n^j)||\big]\,\big|\\
+                       &\leq \sum_{i=1}^k(t_i- t_{i-1}) ||f'(\zeta_i) -
+                       (f'_1(c_i^j), \ldots, f'_n(c_n^j))||
+                       \\
+  \end{align*}
+  Por el lema 2 , $\exists \, \delta>0$ tal que $||f'(\zeta_i) - (f'_1(c_i^j), 
+  \ldots, f'_n(c_n^j))||<\frac{\epsilon}{3(b-a)}$ para $||P_3|| < \delta_3$
+  \begin{align*}
+    \sum_{i=1}^k(t_i- t_{i-1}) ||f'(\zeta_i) -(f'_1(c_i^j), \ldots, f'_n(c_n^j))|| 
+  &< \sum_{i=1}^k(t_i- t_{i-1})\frac{\epsilon}{3(b-a)} \\
+  &= \frac{\epsilon}{3}
+  \end{align*}
+  Así si $P$ es un refinamiento de $P_1$, $P_2$, $P_3$, se verifica en cada caso
+  la desigualdad. Sea $P = P_1 \cup P_2 \cup P_3$, se tiene entonces que:
+  \begin{align*}
+    |\int_a^b ||f'|| - L| &\leq |\int_a^b ||f'||\, - S_P| + |S_P - L_P| + |L_P -
+    L| \\
+                          &< \frac{\epsilon}{3} + \frac{\epsilon}{3} +
+                          \frac{\epsilon}{3} = \epsilon
+  \end{align*}
+  Así 
+  \[
+    \int_a^b ||f'|| = L
+  \]
+\end{proof}
+14-ago-2019
+\begin{example}
+  Considere la función:
+  \begin{align*}
+    f:[2\pi] &\to \mathbb{R}^2 \\
+    t &\mapsto (\cos t, \sin t)
+  \end{align*}
+  Sea $S' = \{(x,y) \in \mathbb{R}^2 \, | \, x^2 + y^2 = 1 \}$ Se tiene entonces
+  que la imagen de $f$ es $S'$
+  Veamos que:
+  \[
+    f'(t) = (-\sin t, \cos t) \quad \forall \, t \in [0, 2 \pi ]
+  \]
+  Veamos que $f'(t) \neq 0$. Por la proposición 6, $f$ es rectificable y 
+  \[
+    L =
+    \int_0^{2\pi} || f ' || = 2\pi.
+  \]
+\end{example}
+\begin{example}
+  \begin{figure}[ht]
+    \centering
+    \incfig{cicloide}
+    \caption{cicloide}
+    \label{fig:cicloide}
+  \end{figure}
+  Considere un ponto $P$ sobre una circunferencia de radio $a$. Si inicialmente
+  $P$ coincide con el origen y la circunferencia rota sobre el eje $x$ en el
+  sentido de las manecillas del reloj. $P$ sigue una trayectoria que se conoce
+  como cicloide. Se puede verificar que dicha curva está dada por:
+  \begin{align*}
+    f: I &\to \mathbb{R}^2 \\
+    \theta &\mapsto a(\theta - \sin \theta, 1 - \cos \theta
+  \end{align*}
+  Si $I \subset (0, 2\pi)$ entonces 
+  \[
+    f'(\theta) = a (1-\cos \theta, \sin \theta)
+  \]
+  Es una curva regular.\\
+  Veamos también que $f$ definida en todo $[0, 2\pi]$ es rectificable. Por la
+  proposición 6. Además
+  \begin{align*}
+    L= \int_0^{2\pi} ||f'||&= a\sqrt{2}\int_0^{2\pi} \big[ 1-\cos \theta \big] 
+  \end{align*}
+\end{example}
+\begin{problem}
+  Estudie la curva obtenida en forma análoga a la  anterior cuando el punto $P$
+  pertenece al interior de la circunferencia.
+\end{problem}
+\begin{example}
+  Considere la función:
+  \begin{align*}
+    f:[0,4\pi] &\to \mathbb{R}^3 \\
+    t &\mapsto (a\cos t, a \sin t, t)
+  \end{align*}
+  Así:
+  \[
+    f'(t) = (-a \sin t, a \cos t, 1)
+  \]
+  Entonces $f$ es rectificable y:
+  \begin{align*}
+    L &= \int_0^{4\pi} ||f'|| \\
+      &= \int_0^{4\pi} (a^2 + 1)^{\frac{1}{2}} \\
+      &= 4\pi (a^2 + 1)^{\frac{1}{2}}
+  \end{align*}
+\end{example}
+\begin{example}
+  Considere una función $f: I \to \mathbb{R}$. tal que $f'$ está definida y es
+  continua en $I$. Sea
+  \begin{align*}
+    F: I &\to \mathbb{R}^2 \\
+    t &\mapsto (f, f(t))
+  \end{align*}
+  entonces $F$ es una curva regular ya que:
+  \[
+    F'(t) = (1,f'(t)) 
+  \]
+\end{example}
+\begin{example}
+  Considere la elipse $C$ cuya ecuación es $ \frac{x^2}{a^2} + \frac{y^2}{b^2}
+  =1$. Así $C$ es la traza de la función:
+  \begin{align*}
+    f:[0, 2\pi] &\to  \mathbb{R}^2 \\
+    t & \mapsto (a \sin t, b \cos t)
+  \end{align*}
+  Observe que $f'(t) \neq 0$.
+\end{example}
+\begin{problem}
+  Encontrar una helice sobre la superficie de una esfera 
+\end{problem}
+16-ago-2019
+\begin{definition}
+  Sea $F: I \to \mathbb{R}^n$ una curva regular. Sean $C = f(I) y t \in I$. Se
+  define el vector tangente unitario $C$ en $f(t)$, denotado por $T(t)$ como
+  \[
+    T(t) = \frac{f'(t)}{||f'(t)||}
+  \]
+  Considere la función 
+  \begin{align*}
+    s: I & \to \mathbb{R} \\
+    t &\mapsto \int_a^t ||f'||
+  \end{align*}
+  Siendo $I=[a,b]$. $s(t)$ se denomina la longitud de arco de $f$ entre $f(a) y
+  f(t)$. Observe lo siguiente: Sea $f: I \to \mathbb{R}^n$ una curva regular.
+  Por el teorema fundamental del cálculo
+  \[
+    s' = ||f'||
+  \]
+  Se tiene de la definición del vector tangente que 
+  \[
+    T= \frac{f'}{s'} \quad \therefore \quad f' = s'T
+  \]
+  Si $f$ es de clase $C^2$ entonces se tiene:
+  \begin{equation}\label{eq:2}
+    f'' = s''T + s'T'
+  \end{equation}
+\end{definition}
+\begin{lemma}
+  Sea $g:I \to \mathbb{R}^n$ una función derivable. Si $||g||$ es constante,
+  entonces $g(t)$ es ortogonal a $g'(t) \, \quad \forall \, t \in I$.
+\end{lemma}
+\begin{proof}
+  Por hipótesis existe $c \in \mathbb{R}$ tal que $||g(t)|| =c \, \quad \forall t \in
+  I$. Sea $t  \in I$ entonces:
+  \begin{align*}
+    c^2 = ||g(t)^2|| &= \langle g(t),g(t) \rangle \\
+    0&= \langle g'(t), g(t) \rangle
+  \end{align*}
+  Si la función $T$ es derivable, entonces, dado que $||T(t)|| = 1$, se tiene
+  del lema anterior que $T(t) \perp T'(t)$
+\end{proof}
+\begin{definition}
+  Sea $f: I \mathbb{R}^n$ una curva regular. Sea $t \in I$ tal que $T'(t)$ está
+  definida y es distinta de $0$. Se define entonces el vector normal unitario a
+  $C= f(I)$ en $f(t)$ denotado por $N(t)$ como:
+  \[
+    N(t) = \frac{T'(t)}{||T'(t)||}
+  \]
+  Se tiene de lo anterior que $T(t)$ es ortogonal a $N(t)$. A la recta que pasa
+  por $f(t)$ en la dirección del vector $N(t)$ se denomina recta normal
+  principal.
+\end{definition}
+\begin{remark}
+  De la identidad \eqref{eq:2} se tiene
+  \begin{equation}\label{eq:3}
+    f'' = s''T + s'N||T'|| 
+  \end{equation}
+
+\end{remark}
+\begin{definition}
+  Sea $f: I \to \mathbb{R}^3$ una curva regular de clase $C^2$. Sea $t \in I$
+  tal que $T'(t) \neq 0$. El plano que pasa por $f(t)$, paralelo al plano
+  determinado por $T(t)$ y $N(t)$, se denomina plano osculador a $C = f(I)$ en
+  $f(t)$. El vector $T(t) \times N(t)$ se denomina vector binormal a $C$ en
+  $f(t)$ y se denota por $B(t)$. Observe que $||B(t)||=1$.
+\end{definition}
+$T(t), N(t),B(t)$ son vectores unitarios, mutuamente ortogonales. 
+$B(t)$ es un vector normal al plano osculador.
+\begin{definition}
+  Sea $f: I \to \mathbb{R}^3$ una curva regular. Sean $t_0, t_1 \in I$ 
+  Se define la curvatura de $C=f(I)$ en $f(t_0)$ denotada por $\kappa(t_0)$ como
+  \[
+    \kappa = \lim_{t\to t_0} \frac{||T(t)- T(t_0)||}{|s(t)-s(t_0)|}
+  \]
+\end{definition}
+\begin{figure}[ht]
+  \centering
+  \incfig{kappa}
+  \caption{kappa}
+  \label{fig:kappa}
+\end{figure}
+\begin{proposition}
+  Sea $f:I \to \mathbb{R}^3$ una curva regula de clase $C^2$; sea $t_0 \in I$
+  entonces $\kappa(t_0)$ está definida y es igual a:
+  \[
+    \frac{||T'(t_0)||}{||f'(t_0)||}
+  \]
+\end{proposition}
+\begin{proof}
+  \begin{align*}
+    \lim_{t \to t_0} \frac{||T(t) - T(t_0)||}{|s(t)- s(t_0)|} &=
+    \lim_{t \to t_0}\frac{\frac{||T(t)- T(t_0)||}{|t-t_0|}}{\frac{|s(t)-s(t_0)|}{|t-t_0|}} \\
+    \frac{||T'(t_0)||}{|s'(t_0)|} &= \frac{||T'(t_0)||}{||f'(t_0)||}
+  \end{align*} 
+\end{proof}
+\begin{definition}
+  Sea $f: I \to \mathbb{R}^3$ una curva regular de clase $C^2$. si $t \in T$ y
+  $\kappa(t) \neq 0$, se define el radio de curvatura de $C = f(I)$ en $f(t)$,
+  denotado por $\mathfrak{c}(t)$ como $\frac{1}{\kappa(t)}$
+\end{definition}
+\begin{example}
+  Considere la curva regular 
+  \begin{align*}
+    f: I &\to \mathbb{R}^2 \\
+    t \mapsto (a\cos t, s \sin t).
+  \end{align*}
+  Veamos que:
+  \begin{align*}
+    f'(t) &= (- a \sin t, a \cos t) \\
+    ||f'(t)|| &= a \\
+    T(t) &= (- \sin t, \cos t) \\
+    T'(t) &= (- \cos t, -\sin t) \\
+  \end{align*}
+  La proposición 7 implica que $\kappa(t) = \frac{1}{a}$. Entonces
+  $\mathfrak{c}(t) = a$.
+
+\end{example}
+Observe que de la ecuación \eqref{eq:3} y la proposición 7, se tiene:
+\begin{equation}\label{eq:4}
+  f'' = s''T + N\kappa s'^2 
+\end{equation}
+\begin{proposition}
+  Sea $g: I \to \mathbb{R}$ una función de clase $C^2$. Considere ahora la
+  función 
+  \begin{align*}
+    f: I &\to \mathbb{R}^2\\
+    t &\mapsto (t, g(t))
+  \end{align*}
+  La curvatura de $f$ en $t$ es 
+  \[
+    \kappa(t) =  \frac{|g''(t)|}{[1 + g'(t)^2]^{\frac{3}{2}}}
+  \]
+\end{proposition}
+\begin{proof}
+  $f$ es una curva regular de clase $C^2$. De la identidad \eqref{eq:4} se
+  tiene:
+  \begin{align*}
+    \langle f'', T \rangle &= s''\langle T, T \rangle +
+    \kappa(s')^2\langle N,T \rangle \\
+                           &= s'' ||T||^2
+  \end{align*}
+  Como $||T||=1$ se tiene así $s'' \langle f'' , T \rangle$. Observe que
+  $f' = (1, g')$, $f'' = (0, g'')$.
+  \[
+    T= \frac{f'}{||f'||} = \frac{(1,g')}{\big[ 1 + (g')^2\big]^{\frac{1}{2}}}
+  \]
+  así 
+  \[
+    s'' = \frac{g'g''}{\big[ 1 + (g')^2\big]^{\frac{1}{2}}}
+  \]
+  de \eqref{eq:4} se tiene
+  \begin{equation}\label{prop:8:eq:1}
+    \kappa N = \frac{f'' - s''T}{(s')^2 } 
+  \end{equation}
+  Observe que 
+  \begin{align*}
+    f'' - s''T &=  (0,g'') - \frac{g'g''}{\big[1 +(g')^2\big]^{1/2}}\frac{(1,g')}{\big[1 +
+    (g')^2\big]^{1/2}} \\
+               &= \frac{-g'g'', g''}{1 + (g')^2}
+      \end{align*}
+      de \eqref{prop:8:eq:1}:
+      \[
+        \kappa N = \frac{-g'g'', g''}{\big[1 + (g')^2\big]^2} 
+      \]
+      observe que $\kappa = ||\kappa N||$.
+      Se tiene así finalmente que:
+      \begin{align*}
+        \kappa &=\frac{\big[ [(g')^2 +1](g'')^2\big]^{\frac{1}{2}}}{\big[1 +
+        (g')^2\big]^{\frac{3}{2}}} \\
+               &=  \frac{|g''(t)|}{[1 + g'(t)^2]^{\frac{3}{2}}} 
+          \end{align*}
+        \end{proof}
+        \begin{proposition}
+          Sea $f: I \to \mathbb{R}^3$ una curva regular de clase $C^2$. Entonces la
+          curvatura está dada por la expresión
+          \[
+            \kappa = \frac{|| f' \times f'' ||}{||f'||^3}  
+          \]
+        \end{proposition}
+        \begin{proof}
+          De la identidad \eqref{eq:4} se tiene:
+          \begin{align*}
+            f' \times &= s'' (f' \times T) + \kappa (s')^2 (f' \times N) \\
+            f' \times t &= 0 \\
+            \mbox{así } f' \times f'' &=  \kappa (s')^2 (f' \times N) \\
+            ||f' \times f'' || &= \kappa ||f'||^3 \\
+            \kappa &=  \frac{||f' \times f''||}{||f'||^3}
+          \end{align*}
+        \end{proof}
+        \begin{example}
+          Considere la curva regular 
+          \begin{align*}
+            f:[0,2 \pi] &\to \mathbb{R}^3 \\
+            t &\mapsto (a\sin t, b \cos t, 0)
+          \end{align*}
+          Veamos que:
+          \begin{align*}
+            f'(t) &= (a \cos t, - b \sin t, 0) \\
+            ||f'|| &= (a^2 \cos^2 t + b^2 \sin^2)^{\frac{1}{2}}
+          \end{align*}
+          En consecuecia de la proposición anterior se tiene:
+          \[
+            \kappa = \frac{ab}{[a^2 \cos^2 t + b^2 \sin^2 t]^2}
+          \]
+          Así la curvatura es máxima ó mínima sí:
+          \begin{align*}
+            \kappa(0) = \kappa(\pi) &= \frac{b}{a^2} \\ 
+            \kappa(\frac{\pi}{2}) = \kappa(\frac{3\pi}{2}) &= \frac{a}{b^2}
+          \end{align*}
+        \end{example}
+21-ago-2019
+
+Hemos definido a la curvatura de una curva en términos de la longitud de arco.
+Si se definiera en términos del parámetro $t$, entonces sería dependiente de la
+parametrización y no únicamente de la traza. \\ 
+
+Sea $f: I \to \mathbb{R}^3$ una curva regular de clase $C^2$. Dado $\hat{t} \in
+\kappa (\hat{t})$ la curvatura en $t$ es distinta de cero. Considere una
+circunferencia cuyo radio sea $\rho(\hat{t})$, entonces su curvatura es
+$\frac{1}{\rho(\hat{t})}$. Ésta circunferencia se denomina circunferencia
+osculatriz de la traza de $f$ en $f(\hat{t})$.
+Y es la curva que cumple que:
+\begin{itemize}
+  \item $f(\hat{t})$ está en la circunferencia.
+  \item El centro de la circunferencia se encuentra en $f(\hat{t}) +
+    \rho(\hat{t})N(\hat{t})$ 
+\end{itemize}
+\begin{problem}
+Verifique que si $f: I \to \mathbb{R}$, es una función de clase $C^2$ lo mismo
+que $g: I \to \mathbb{R}$, tales que para $t_0 \in I$, $f(t_0) = g(t_0)$,
+$f'(t_0) = g'(t_0)$, $f''(t_0) = g''(t_0)$, entonces las curvas regulares
+definidas por:
+\begin{align*}
+  F: I &\to \mathbb{R} \\
+  t &\mapsto (t,f(t)) \\
+  G: I &\to \mathbb{R} \\
+  t &\mapsto (t,g(t)) \\
+\end{align*}
+Entonces la curvatura de $F(I)$ en $t_0$ es igual que la de $G(I)$ en $t_0$. y
+determine las condiciones para las cuales la circunferencia osculatriz es la
+misma.
+\end{problem}
+Sea $f: I \mathbb{3}^3$ una curva regular para la cual el vector binormal $B(t)$
+está definido en todo $I$. Suponga que la función $B$ es derivable. Entonces se
+tiene lo siguiente:
+\begin{align*}
+  B' \times N = (T \times N)' \times N &= \big[(T' \times N ) + (T \times N')
+  \big] \times N \\ 
+                                       &= 0
+\end{align*}
+\begin{definition}
+ Como los vectores $B'$ y $N$ son colineales, tenemos que  $\forall \, t \in I$,
+ existe un escalar $\tau(t)$ tal que
+ \[
+   \frac{B'(t)}{s'(t)} = \tau(t) N (t)
+ \]
+ A $\tau(t)$ se denomina la torsión de la traza de $f$ en $f(t)$.
+\end{definition}
+\section{Ecuaciones de Frenet-Serret}
+\begin{proposition}
+ Sea $f$ una curva regular de clase $C^3$. Entonces:
+ \begin{enumerate}
+   \item $T' = \kappa s' N$ \\
+   \item $N' = -\kappa s' T - \tau s'B$
+ \end{enumerate}
+\end{proposition}
+\begin{proof}
+ Observe que $T' = N ||T'||$. Como $||T'|| = \kappa s'$, entonces tenemos 
+ \[
+   R' =\kappa s' N
+ \]
+ De la definición de torsión se tiene
+ \[
+   B' = \tau s' N
+ \]
+ Así mismo
+ \begin{align*}
+   B' &= (T \times N)' \\
+      &= (T \times N') + (T' \times N ) \\
+      &= T \times N'
+ \end{align*}
+ Así $\tau s' N = T \times N'$. Así
+ \begin{align*}
+   \tau s' N &=  
+ \end{align*}
+\end{proof}
+Las ecuaciones
+\begin{align*}
+  T'&= \kappa s' N \\
+ N' &= -\kappa s' T - \tau s' B \\
+ B' &=\tau s' N
+\end{align*}
+Se conocen como ecuaciones Frenet-Serret. Fueron obtenidas en 1847 por J. Frenet
+
+\begin{proposition}
+ Considere una curva regular $f$ de clase $C^3$. Sea $t \in I$ tal que $\kappa
+ \neq 0$. entonces la torsión
+ \[
+   \tau (t) = -\frac{\langle f'(t) \times f'' (t), f'''(t)\rangle}{||f'(t) \times
+   f''(t) ||^2}
+ \]
+\end{proposition}
+\begin{proof}
+  De la identidad \eqref{eq:4}.
+  se tiene
+  \[
+    f''' = s'''T +s''T' + \kappa'Ns^2' +  \kappa [2s's''N + (s')^2N']
+  \]
+  Haciendo uso de las dos primeras ecuaciones de Frenet se tiene
+  \begin{align*}
+    f''' = s'''T + s''s'\kappa N &+ \kappa N s^2' + 2\kappa  s's''N \\
+                                 &+ \kappa(s'^2) [-\kappas' T - \tau s' B]
+  \end{align*}
+así:
+\begin{align}\label{prop:11:lambda}
+  f''' = [s'''-\kappa^2(s')^3]T &+ [3 \kappa s's'' + \kappa' (s')^2] N \\
+                                &-\kappa \tau (s')^3B
+\end{align}
+De \eqref{eq:4} se tiene
+\begin{align*}
+  f\times f'' &= s's''(T \times T) + \kappa (s')^3 B \\
+              &= \kappa (s')^3 B \\
+  ||f \times f''|| &= \kappa(s')^3
+\end{align*}
+Como $\langle B, T \rangle = \langle B, N \rangle =0$ se tiene de lo anterior
+\begin{align*}
+  \langle f'\times f'' ,  f''' \rangle &= - \tau [\kappa(s')^3]^2 \\
+                                       &= -\tau ||f' \times f''||^{2}
+\end{align*}
+Así si $\kappa \neq 0$ se concluye
+ \[
+   \tau (t) = -\frac{\langle f'(t) \times f'' (t), f'''(t)\rangle}{||f'(t) \times
+   f''(t) ||^2}
+ \]
+\end{proof}

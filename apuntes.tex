@@ -1,0 +1,91 @@
+
+%----------------------------------------------------------------------------------------
+%	Cabecera
+%----------------------------------------------------------------------------------------
+\documentclass[b5paper]{book}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{amsthm}
+\usepackage{pxfonts}
+\usepackage{mdframed}
+\usepackage{graphicx}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
+\usepackage{booktabs}
+\usepackage[backend=biber]{biblatex-chicago}
+\usepackage{enumerate}
+\usepackage[font={small,sc}]{caption}
+\usepackage{systeme, mathtools}
+\usepackage{wrapfig}
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\pdfsuppresswarningpagegroup=1
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposición}
+\newtheorem*{proposition*}{Proposición}
+\newtheorem*{corollary}{Corolario}
+\newtheorem{axiom}{Axioma}
+\newtheorem{problem}{Problema}[section]
+\newtheorem{lemma}{Lema}[section]
+
+
+\theoremstyle{definition}
+\newmdtheoremenv{definition}{Definición}
+\theoremstyle{plain}
+
+\newtheorem*{remark}{{\color{blue}\textit{Observación}}}
+\newtheorem*{notation}{{\color{gray}\textit{Notación}}}
+\newtheorem*{example}{{\color{gray}\textit{Ejemplo}}}
+
+\decimalpoint
+\addbibresource{algebra.bib}
+\newenvironment{sol}{\paragraph{Solución: \\}\noindent}{\hfill$\blacksquare$}
+\newcommand{\setzero}{\{0\}}
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\theenumi}{\alph{enumi}.}%
+\DeclareMathOperator{\diff}{d}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Título
+%----------------------------------------------------------------------------------------
+
+\title{\textsc{Apuntes de Geometría Diferencial II\vspace{3mm}
+\vspace{1cm}}}
+
+\author{\textsc{Flores Rodríguez Jaziel David.} \\
+\textsc{Profesor: Jesús Octavio Fabián Loyzaga Mendoza.} \vspace{1cm}}
+
+\newpage
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	Documento
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+\onehalfspace
+\chapter{Primer Parcial}
+\input{tex/parcial1.tex}
+\chapter{Segundo Parcial}
+\input{tex/parcial2.tex}
+\chapter{Tercer Parcial}
+\input{tex/parcial3.tex}
+\end{document}
+
+
+

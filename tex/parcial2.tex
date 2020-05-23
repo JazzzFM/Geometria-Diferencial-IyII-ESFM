@@ -1,0 +1,693 @@
+\section{Evolutas y envolventes}
+2-sept-2019
+
+Sea $f: I \to \mathbb{R}^n$ una curva regular. 
+$s: I \to \mathbb{R}$ es una función contínua. 
+
+Sean $x,y \in I$ con $x<y$. entonces
+\[
+  s(y) = \int_a^y||f'|| = \int_a^x||f'|| + \int_x^y||f'|| = s(x) +
+  \int_x^y||f'||
+\]
+Como $||f'||>0$ se tiene que $s(y)>s(x)$.
+Sea $J = s(I)$. $J$ es un intervalo cerrado y $s:I\to J$ es una biyeccion
+contínua creciente. Así $s^{-1}:J \to I$ es contínua.
+Sea $F = f\circ s^{-1}$. $F \in C^n$.
+Observe que $(f,F) \in R$ ya que $f = F\circ s$. A $F$ se le denomina la
+parametrización natural ó representación paramétrica natural de $[f]$.
+\begin{proposition}
+  Sea $f: I \to \mathb{R}^n$ una curva regular, $F$ la representación
+  paramétrica natural de $[f]$, entonces $F$ es una curva regular y $||F'(x)||
+  =1 \quad \forall \, x \in s(I)$.
+\end{proposition}
+\begin{proof}
+  Dado $x \in s(I)$, $x = s(t)$ para algún $t \in I$. Se tiene, dado que $s'(t)
+  = ||f'(t)|| \neq 0 \quad \forall t \in I$.
+  Se tiene por el teorema de la función inversa que:
+  \[
+    (s^{-1})'(x) = \frac{1}{s'(u)}
+  \]
+ En consecuencia $F$ es derivable; además
+ \[
+   F'(x) = f'(s^{-1} (x)) (s^{-1})'(x) = \frac{f'(u)}{||f'(u)||}
+ \]
+ Así $||F'(x)||=1$.
+\end{proof}
+Así para $F$ las ecuaciones de Frenet-Serret son:
+
+\[
+  \begin{array}{c}
+    T' \\
+    N' \\
+    B' 
+  \end{array} = 
+  \Big(\begin{array}{ccc}
+    0 & \kappa & 0 \\
+    -\kappa & 0 & \tau \\
+    0 & \tau & 0
+  \end{array} \Big)
+  \begin{array}{c}
+    T \\
+    N \\
+    B 
+  \end{array}
+\]
+\begin{proposition*}
+  Considere a la curva paramétrica regular $[g]$. Sean entonces $f ,\hat{f} \in
+  [g]$ curvas regulares con $f:[a,b] \to \mathbb{R}^n$ y
+  $\hat{f}:[\hat{a},\hat{b}] \to \mathbb{R}^n$. Considere entonces sus
+  parametrizaciones naturales $F = f \circ s^{-1}$, $\hat{F} = \hat{f} \circ
+  \hat{s}^{-1}$. Si $\hat{f} = f \circ \alpha$ con $\alpha$ una función de
+  cambio de variable monótona creciente. Entonces $F(u)
+  = \hat{F}(u) \quad \forall u \in s([a,b])$
+\end{proposition*}
+\begin{proof}
+ Veamos que 
+ \begin{align*}
+   F &= f \circ s^{-1} \\
+   \hat{F} &= \hat{f} \circ \hat{s}^{-1} = f \circ \alpha \circ \hat{s}^{-1}
+ \end{align*}
+ Así basta únicamente probar que $s^{-1} = \alpha \circ \hat{s}^{-1}$. Veamos que:
+ \begin{align*}
+    &\, &  s^{-1} &= \alpha \circ \hat{s}^{-1} \\
+    &\Leftrightarrow &  s&= \hat{s} \circ \alpha^{-1} \\
+    &\Leftrightarrow & s \circ \alpha \circ \hat{s}^{-1} (u) &= u 
+ \end{align*}
+Veamos que  
+\begin{align*}
+  (s \circ \alpha \circ \hat{s}^{-1})' &= (\alpha \circ \hat{s}^{-1})'(s' \circ
+  \alpha \circ \hat{s}^{-1}) \\
+                                       &= (\hat{s}^{-1})'(\alpha' \circ
+                                       \hat{s}^{-1})\cdot (s' \circ \alpha \circ
+                                       \hat{s}^{-1}) \\
+                                       &= \frac{\alpha' \cdot ||f' \circ \alpha
+                                       ||}{\hat{s}'} \circ \hat{s}^{-1}
+\end{align*}
+Veamos que $\alpha' >0$ puesto que $\alpha$ es monótona creciente. Además
+\[
+  \hat{s} = \int_a^t ||\hat{f}'|| = \int_a^t |\alpha'|\,||f' \circ \alpha||
+\]
+Así:
+\[
+  (s \circ \alpha \circ \hat{s}^{-1})' = 
+  \frac{\alpha' \cdot ||f' \circ \alpha||}{|\alpha'| \, ||f' \circ \alpha||}
+  \circ \hat{s}^{-1} = 1
+\]
+Con lo que tenemos que
+\[
+  s \circ \alpha \circ \hat{s}^{-1} (u) = u + C
+\]
+Y
+\begin{align*}
+  C &= s \circ \alpha \circ \hat{s}^{-1} (0) \\
+    &= s \circ \alpha (\hat{a}) \\
+    &= s (a) \\
+    &= 0
+\end{align*}
+Con lo cual mostramos que $s^{-1} = \alpha \circ \hat{s}^{-1}$ o lo que es
+equivalente:
+$F = \hat{F}$
+\end{proof}
+\begin{definition}
+  Sea $f: I \to \mathbb{R}^3$ la representación paramétrica natural de una curva
+  paramétrica regular. Se dice que una curva regular $g$ es la envolvente de la
+  traza de $f$ si la traza de $g$ intersecta a las tangentes de $f$ formando
+  ángulos rectos 
+\end{definition}
+\begin{figure}[ht]
+    \centering
+    \incfig{envolvente}
+    \caption{envolvente}
+    \label{fig:envolvente}
+\end{figure}
+$g$ debe estar definida de la siguiente manera 
+\[
+  g(s) = f(s) +\lambda T(s)
+\]
+Con la condición $\langle g'(s), T(s) \rangle = 0$. Se tiene así
+\begin{align*}
+  0 = \langle g'(s), T(s) \rangle &= \langle f'(s) + \lambda'(s)T(s)+
+  \lambda(s)T'(s) \rangle \\ 
+                                  &= \langle'(s), T(s) \rangle +
+                                  \lambda'(s)\langle T(s),T(s)\rangle + \lambda
+                                  \langle T'(s), T(s) \rangle \\
+                                  &= \langle f'(s) , f'(s) \rangle + \lambda'(s)\\
+                                  &=  ||f'||^2 + \lambda' = 1 + \lambda'
+\end{align*}
+En consecuencia $\lambda(s) = -s + C$. y así se tiene que:
+\[
+  g(s) = f(s) + (C-s)T(s)
+\]
+Observe que no necesariamente $s$ es el parámetro natural para $g$.
+También veamos que para cada valor de la constante $c$
+\[
+  \langle f'(s) + cT'(s) - s T'(s) - T(s) , T(s) \rangle = 0
+\]
+
+Se ha probado así la siguiente proposición
+\begin{proposition}
+  Dada una parametrización natural $f: I \to \mathbb{R}^3$ de clase $C^2$, la
+  traza de $f$ tiene una infinidad de envolventes cada una dada por
+  \[
+    f(s) + (c-s)T(s)
+  \]
+  siendo $c$ una constante.
+\end{proposition}
+
+Ejemplo: considere la curva regular:
+\begin{align*}
+  f:[0, 2\pi ] \to \mathbb{R}^2 \\
+  t \mapsto (\cos t, \sin t)
+\end{align*}
+Observe que $f$ es la parametrización natural de la clase de $f$. 
+Así cada envolvente de la traza de $f$ es
+\[
+  g(t) = (\cos t - (c-t) \sin t, \sin t + (c-t) \cos t))
+\]
+
+\begin{figure}[ht]
+    \centering
+    \incfig{cacarol}
+    \caption{cacarol}
+    \label{fig:cacarol}
+\end{figure}
+Así se tiene que para $c= 0$ se tiene que $g(t)$ es un punto en la
+circunferencia con centro en el origen y radio $[1 + t^2]^{\frac{1}{2}}$
+
+Demuestre que si un segmento de un de longitud $2\pi$ tiene un extremo fijo al
+punto $(1,0)$ y se extiende hacia abajo en forma paralela al eje $y$, entonces
+su otro extremo describe a una envolvente de la circunferencia con centro en el
+origen y radio 1 al envolver tal segmento a la circunferencia en sentido de las
+manecillas del reloj.
+
+\begin{definition}
+  Dada una curva regular $f: I \to \mathbb{R}^3$, las curvas que tienen como
+  envolvente a $f$ se denominan evolutas de $f$. 
+\end{definition}
+Se tiene así que las tangentes de una evoluta de $f$ son ortogonales a $f$.
+Considere una curva regular $f:I \to \mathbb{R}^3$. Sea $t \in I$. Existe una
+infinidad de rectas ortogonales a $f$ en el punto $f(t)$, todas aquellas en el
+plano paralelo al determinado por los vectores $N(t)$ y $B(t)$. \\
+Si $h: I \to \mathbb{R}^3$ es una evoluta de $f$, existen $\alpha: I \to
+\mathbb{R}$, $\beta: I \to \mathbb{R}$ tales que:
+\[
+  \forall t \in I \quad h(t) = f(t) + \alpha(t) + \beta(t)B(t)
+\]
+y además $h'(t)$ debe ser paralelo al vector $\alpha(t) N (t) + \beta(t) B(t)$,
+así debe cumplirse
+\[
+  h'(t) \times \alpha(t) N (t) + \beta(t) B(t)
+\]
+Se tiene entonces
+\begin{align*}
+  h' &= f'  + \alpha' N + \alpha N' + \beta' B + \beta B' \\
+     &= s'T +  \alpha N + \alpha (- \kappa s'T - \tau s' B) +\beta'B +
+     \beta(\tau s' N) \\
+     &= s'(1-\k\alpha)T + (\alpha' + \beta \tau s')N + (\beta' - \alpha \tau
+     s')B
+\end{align*}
+Se tiene así que :
+\[
+  0 = s'(1-\kappa \alpha) \alpha (T \times N) + s' (1-\kappa\alpha)\beta(T\times
+  B) + [(\alpha' + \beta \tau s') \beta - (\beta- \alpha \tau s')\alpha (N
+  \times B)]
+\]
+Como tenemos una combinación lineal de tres vectores linealmente independientes
+iguales a cero, cada escalar es cero y en consecuencia:
+\begin{align*}
+  1- \kappa \alpha &= 0 \\
+  \kappa = \rho \\
+  [(\frac{\beta}{\alpha})^2 -1 ]\tau s' &=  \frac{\alpha\beta' -
+  \alpha'\beta}{\alpha^2}\\
+  \tau s' &= \frac{(\frac{\beta}{\alpha})^2}{(\frac{\beta}{\alpha})^2 + 1} \\
+          &= (\arctan (\frac{\beta}{\alpha}))'  \\
+  \beta &= \rho \tan\big[ \int \tau s'  + C \big]
+\end{align*}
+Se verifica así la siguiente proposición:
+\begin{proposition}
+  Dada una curva regular de clase $C^2$, de clase $C^2$ $f: I \to \mathbb{R}^3$,
+  para la cual $\kappa(t) \neq 0$ entonces existe una evoluta de $f$ dada por:
+  \[
+    h = f + \alpha N + \beta B
+  \]
+  con $\alpha = \rho$ y  $\beta = \rho \tan \big[\int \tau s' + C\big]$
+\end{proposition}
+\begin{remark}
+ Si $f$ es una curva plana $\tau = 0$. Así para $C = 0$, se tiene la evoluta $h
+ = f + \rho N$. $h$ es entonces el lugar geométrico de los centros de curvatura.
+\end{remark}
+Considere la parábola definida por:
+\begin{align*}
+  f:I &\to \mathbb{R}^2  \\
+  x &\mapsto (x,x^2)
+\end{align*}
+Se tiene entonces que:
+\begin{align*}
+  f'(x) &= (1,2x) \\
+  || f' || &= (1+ 4x^2)
+\end{align*}
+Así:
+\[
+  T = \frac{f'}{||f'||} = \big( \frac{1}{\sqrt{1+1x^2}}, \frac{2x}{\sqrt{1+4x^2}}\big)
+\]
+Entonces 
+\begin{align*}
+  T' &= \frac{2}{(1 + 4x^2)^{3 /2}}  \\
+  ||T'|| &= \frac{2}{1+4x^2} \\
+  N &= \frac{T'}{||T'||} = \frac{(-2x,1)}{(1+4x^2)^{1 / 2}} \\
+  \kappa &= \frac{||T'||}{||f'||} = \frac{2}{(1+4x^2)^{\frac{3}{2}}} \\
+  \frac{N}{k} &= (-x - 4x^3 , \frac{1}{2} + 2x^2) \\
+  h &= f + \frac{N}{\kappa} = (-4x^3, 3x^2 +\frac{1}{2})
+\end{align*}
+
+Si $y = y(u)$ define una función real de variable real cuya gráfica es la
+evoluta de la parábola entonces se tendría:
+\[
+  y(-4x^3) = 3x^2 + \frac{1}{2}
+\]
+ó bien
+\[
+  y \circ g(x) = t(x)
+\]
+Siendo $g(x) = -4x^3$ y $t(x) = 3x^2 + \frac{1}{2}$
+
+Así
+\begin{align*}
+  u &= g \circ g^{-1} \\
+    &= -4 g^{-1} (u)^3 \\
+  g^{-1}(u) &= (-\frac{u}{4})^{\frac{1}{3}} + \frac{1}{2}  
+\end{align*}
+Así la gráfica de $y$ es simérica respecto al eje de las ordenadas.
+\begin{align*}
+  y'(u)  &= \frac{u}{8}\big( \frac{u^2}{16} \big)^{-\frac{2}{3}} > 0 \mbox{ si } u>0\\
+y''(u) &= - \frac{1}{24} \big(\frac{u^2}{16} \big)^{-\frac{2}{3}} < 0
+\end{align*}
+La ecuación de la evoluta 
+\[
+  y = 3 \big( \frac{x^2}{16} \big)^{\frac{1}{3}} + \frac{1}{2}
+\]
+Puede escribirse como:
+\[
+  (y - \frac{1}{2})^3 = 27 \frac{x^2}{16}
+\]
+o bien
+\begin{equation}\label{evoluta:lambda}
+  2(2y - 1)^3 = 27x^2
+\end{equation}
+
+
+
+\subsection{Parábola no homogénea}
+\begin{figure}[ht]
+    \centering
+    \incfig{lamina}
+    \caption{lamina}
+    \label{fig:lamina}
+\end{figure}
+$(t,t^2)$ punto de contacto \\
+$(a,b)$ centro de la lámina de la placa \\
+\[
+  y = 2xt - t ^2 \qquad \mbox{ ecuación de }L
+\]
+\[
+  y = - \frac{1}{2t} (x -a) + b \qquad  \mbox{ ecuación de }M
+\]
+\[
+  h = d((a,b),q) = \frac{b - 2ta + t^2}{(4t^2 +1)^{1 / 2}}
+\]
+\[
+  V = mgh
+\]
+Así 
+\[
+  V(t) = mg \big[ \frac{b-2ta + t^2}{(4t^2 +1)^{1 / 2}} \big]
+\]
+Veamos que $V'(t) = 0$ si $(t,t^2)$ es un punto de equilibrio.
+\[
+  V'(t) = \frac{ mg u(t)}{(4t^2 + 1)^{3 / 2}}
+\]
+Siendo $u(t) = 2t^3 + t(1- 2b) - a$. \\
+$(t,t^2)$ corresponde a un punto de equilibrio si y sólo si $u(t) = 0$, y además
+$u$ pasa de negativo a positivo en $t$. \\
+Observe que si $(t, t^2)$ es un punto de equilibrio $u(t) = 0$. Así $(a,b)$
+pertenece a la recta perpendicular a $L$ que pasa por $(t, t^2)$; es decir,
+$(t,t^2) \in M$.
+Sea $S = \{ (t,a,b) \in \mathbb{R}^3 \, | \, 2 t^2 + t(1-2b) - a = 0 \, \}$.
+
+Si se considera el plano $t=t_0$, $S$ lo intersecta en la recta $2 t_0^3 +
+t_0(1-2b) -a = 0$. 
+Sea $K$ la recta normal a la parábola $b = a^2$ en el plano $(a,b)$ en el punto
+$(t_0,t_0^2)$. La ecuación de dicha recta es $b =  - \frac{1}{2t_0} a + t_0^2 +
+\frac{1}{2}$. \\
+Si la recta $K$ se traslada al plano paralelo al plano $ab$ que intersecta al
+eje $t$ en $t_0$ lo que se tiene es precisamente la intersección de $S$ con tal
+plano.
+\begin{figure}[ht]
+    \centering
+    \incfig{superficie-s}
+    \caption{superficie S}
+    \label{fig:superficie-s}
+\end{figure}
+Considere un plano paralelo al plano $at$, digamos el plano $b = b_0$. Tal plano
+intersecta a $S$ en $\{ (t, a, b_0) \, | \, 2t^3 + t(1-2b_0) -a = 0 \,\}$. Es
+decir, en el conjunto definido por:
+\begin{align*}
+  a(t) &= 2t^3 + t(1-2b_0) \\
+  a'(t) &= 6t^2 + c
+\end{align*}
+Así $a(t)$ tiene puntos críticos si y sólamente si $c \leq 0$, es decir, $b_0
+\geq  \frac{1}{2}$. \\
+\begin{figure}[ht]
+    \centering
+    \incfig{sabana}
+    \caption{sabana}
+    \label{fig:sabana}
+\end{figure}
+
+Para $(a,b)$ dado, la línea vertical a través de $(0,a,b)$. intersecta a $S$ en
+un punto$(t,a,b)$ que es solución de la ecuación $u(t)=0$. El número de
+soluciones puede ser 1,2 ó 3. Los valores de $t$ corresponden a puntos críticos
+de $V$. Un mínimo de $V$ ocurre para valores de $t$ en los cuales $u(t)$ cambia
+de negativo a positivo. \\
+Sea $\gamma$ la región del plano $ab$ que consiste de los puntos $(a,b)$ para
+los cuales hay exáctamente dos soluciones de $u$. 
+Así si $t$ es la raíz doble:
+\begin{align}
+  2t^3 + t(1-2b) -a &= 0 \\ 
+  6t^2 +(1-2b) &= 0 \\
+  t &\neq 0 
+\end{align}
+
+Se tiene entonces que $2(2b -1)^3 = 27a^2$.
+
+20-Septiembre-2019
+
+\section{Superficies}
+\begin{definition}
+  Un conjunto $S \subset \mathbb{R}^3$ es una superficie si para cada punto $P
+  \in S$ existen abiertos $U_P, V_P$ en $\mathbb{R}^2$ y $\mathbb{R}^3$
+  respectivamente, así como un homeomorfismo: $f_P: U_P \to V_P \cap S$. Siendo
+  $P \in V$. Si además $f_P$ es diferenciable y $\forall c \in U$, $Df_P(c)$ es
+  inyectiva, entonces se dice que la superficie es regular. \\
+  $f_P$ se denomina parametrización local de $S$ en $P$. Sea $A$ un conjunto de
+  parametrizaciones locales de $S$; si para cada $P \in S$, existe en $A$ una
+  parametrización local de $S$ en P entonces se dice que $A$ constituye un atlas
+  para $S$, y a cada elemento de $A$ se le denomina carta.
+\end{definition}
+\begin{remark}
+  En la definición de superficie regular, la condición relativa a que $D f_P(c)$
+  sea inyectiva es equivalente a que las columnas de la matriz:
+  \[
+    \begin{bmatrix}
+      D_1(f_P)_1 & D_2(f_P)_1 \\ 
+      D_1(f_P)_2 & D_2(f_P)_2 \\ 
+      D_1(f_P)_3 & D_2(f_P)_3 \\ 
+    \end{bmatrix}
+  \]
+  Sean linealmente independientes.
+\end{remark}
+\begin{example}
+  Sea $ S = \{(x,y,z) \, | \, x^2 + y^2 + z^2 = 1 \, \}$. Sea $P \in S$, $P =
+  (P_1,P_2, P_3)$ Considere el caso en que $P_3 > 0$. Considere los conjuntos $U
+  = \{ \, (x,y) \in \mathbb{R}^2 \, | \, x^2 + y^2 <1 \, \}$ y $V= \{ (x,y,z) \,
+  | \, z > 0 \}$.  \\
+  Considere la función:
+  \begin{align*}
+    f_P: U &\to V \cap S \\
+    (x,y) &\mapsto (x,y, \sqrt{1-(x^2 + y^2)})
+  \end{align*}
+  $f_P$ es inyectiva, suprayectiva y contínua. Observe que $\f^{-1}_P: V \cap S
+  \to U$ es contínua por ser la restricción de la proyección $ \Pi:  \mathbb{R}^3
+  \to \mathbb{R}^2$ al conjunto $V \cap S$. \\
+  $f_P$ es en consecuencia un homeomorfismo. $f_P$ es diferenciable ya que cada
+  una de sus componentes lo es, y
+  \[
+    [Df_P(c)] = \begin{bmatrix}
+      1 & 0 \\ 
+      0 & 1 \\
+      \frac{-c_1}{\sqrt{1-(c_1^2 +c_2^2)}} &
+      \frac{-c_2}{\sqrt{1-(c_1^2 +c_2^2)}} \\
+    \end{bmatrix}
+  \]
+que es inyectiva. 
+La función anterior $f_P$ se denotará por $g_1$.
+
+Sea $W = \{ (x,y,z) \, | , \mathbb{R}^3 \, | z <0 \}$. Considere a
+\begin{align*}
+  g_2: U &\to S \cap W$  \\
+(x,y) &\mapsto (x, y , -\sqrt{1- (x^2 + y^2)}) \}
+\end{align*}
+$g_2$ es una parametrización local de $S$ en $a$ para cada $q \in S \cap W$. De
+la misma forma se construyen $g_3, \ldots, g_6$ :
+\begin{align*}
+  g_3: U' &\to S \cap H \\
+  (z,y) &\mapsto (\sqrt{1-(z^2 + y^2)}, y, z) \\
+  g_4: U' &\to S \cap K \\
+  (z,y) &\mapsto (-\sqrt{1-(z^2 + y^2)}, y, z) \\
+  g_5: U'' &\to S \cap L \\
+  (x,z) &\mapsto (x, \sqrt{1-(z^2 + x^2)}, z) \\
+  g_6: U'' &\to S \cap M \\
+  (x,z) &\mapsto (x, -\sqrt{1-(z^2 + x^2)}, z)
+\end{align*}
+Definiendo a los dominios de forma análoga.
+Así se construye un átlas para la esfera. Se demuestra entonces que $S$ es una
+superficie regular.
+\end{example}
+\begin{proposition}
+  Sea $U$ abierto en $\mathbb{R}^2$ y sea $f: U \to \mathbb{R}$ una función
+  diferenciable; entonces la gráfica de $f$ es una superficie regular
+
+\end{proposition}
+\begin{proof}
+ Considere la función
+ \begin{align*}
+   g: U &\to \{ (x, y, f(x,y)) \, | \, (x,y) \in U \, \} \\
+   (x,y) &\mapsto (x, y , f(x,y))
+ \end{align*}
+ $g$ es inyectiva, suprayectiva, derivable, y $g^{-1}$ es continua. Se tiene así
+ que $g$ es un homeomorfismo. Y
+ \[
+   [Dg(c)] =%
+   \begin{bmatrix}
+     1 & 0 \\
+     0 & 1 \\
+     D_1f(c) & D_2f(c)
+   \end{bmatrix}
+ \]
+Se ha probado que $g$ es una parametrización local de la gráfica de $f$ en
+cualquier punto de ella.
+
+\end{proof}
+\begin{definition}
+Sea $U$ un subconjunto abierto de $\mathbb{R}^3$. Considere una función $f: U
+\to \mathbb{R}$ diferenciable. Se dice que $a \in f(U)$ es un punto singular de
+$f$ si $Df(c)$ no es suprayectiva, en tal caso se dice que $f(c)$ es un valor
+singular. Se dice que $a \in \mathbb{R}$ es un valor regular de $f$ si no es un
+valor singular. 
+
+\end{definition}
+La siguiente proposición se basa en los planteamientos del teorema de la función
+inversa. El teorema se encuentra en la mayor parte de los textos de la geometría
+diferencial.
+
+\begin{proposition}
+  Sea $f: U \subset \mathbb{R}^3 \to \mathbb{R}$, siendo $U$ abierto, una
+  función diferenciable. Sea $a \in f(u)$ un valor regular de $f$, entonces
+  $f^{-1}(a)$ es una superficie regular.  
+\end{proposition}
+\begin{proof}
+  Sea $S = f^{-1}(a)$ y sea $c \in S$. Como $f(c) = a$ y $a$ es un valor regular
+  $c$ no es un punto singular. Por ello $Df(c)$ es suprayectiva, así
+  \[
+    [Df(c)] =%
+    \begin{bmatrix}
+      D_1f(c) & D_2f(c) & D_3f(c)
+    \end{bmatrix}
+  \]
+  Con algún $D_if(c)$ distinto de 0. Asumiremos que $D_3f(c) \neq 0$; en caso
+  necesario se renombrarían los ejes.
+
+  Considere la función
+  \begin{align*}
+    F: U \subset \mathbb{R}^3 &\to \mathbb{R}^3 \\
+    (x,y,z) &\mapsto (x,y, f(x,y,z))
+  \end{align*}
+  $F$ es claramente diferenciable y
+  \[
+    [DF(c)] =%
+    \begin{bmatrix}
+      1 & 0 & 0 \\ 
+      0 & 1 & 0 \\ 
+      D_1f(c) & D_2f(c) & D_3f(c) 
+    \end{bmatrix}
+  \]
+  Observe que $\det [DF(c)] \neq 0$. Por el teorema de la función inversa
+  existen abiertos, $V$, $W$ en $\mathbb{R}^3$ tales que $c \in V$ con $F(c) \in
+  W$. $F: V \to W$, es una biyección diferenciable cuya inversa es
+  diferenciable. 
+Sean $g_1, g_2, g_3$ las componentes de $F^{-1}$, entonces cada una de ella es
+diferenciable.
+
+Sea 
+\begin{align*}
+  \Pi: \mathbb{R}^3 &\to \mathbb{R}^2 \\
+  (x,y,z) &\mapsto (x,y)
+\end{align*}
+Observe que $\Pi(V) = \Pi(W)$.
+
+Considere la función 
+\begin{align*}
+  h: \Pi(W) &\to \mathbb{R} \\
+  (x,y) &\mapsto g_3(x,y,a)
+\end{align*}
+Veamos que si $(x,y) \in \Pi(W)$ existe $z' \in \mathbb{R}$ tal que $(x,y,z')
+\in W$. Además $F(c_1,c_2,a) \in W$. Se puede asumir que $W$ es un producto
+cartesiano de intervalos abiertos. Lo anterior justifica que $(x, y, a) \in W$. 
+
+Sea
+\begin{align*}
+  k: \mathbb{R}^2 &\to \mathbb{R}^3 \\
+  (x,y) &\mapsto (x,y,a)
+\end{align*}
+Veamos que $k$ es diferenciable. Se tiene que $h = g_3 \circ k|_{\Pi(W)}$. Se
+tiene así que $h$ es diferenciable. Veamos que
+\[
+  F(V \cap S) = F(G_h) = \{ (x, y, a) \in W \} 
+\]
+Por lo cual $G_h = V \cap S$. Y anteriormente se mostró que la gráfica $G_h$ es
+una superficie regular.
+
+
+\end{proof}
+\begin{proposition}
+  Sean $S$ una superficie regular, $P \in S$, $f: U \subset \mathbb{R}^2 \to S$
+  y $g:V \subset \mathbb{R}^2 \to S$ dos parametrizaciones locales de $S$ en $P$
+  y $W = f(U) \cap g(V)$. La función $h = f^{-1} \circ g : g^{-1}(W) \to
+  \f^{-1}(W)$ es un difeomorfismo.
+\end{proposition}
+\begin{proof}
+  Sea $q = h(r)$, entonces $q \in f^{-1}(W) \subset U$. Como $f$ es
+  parametrización local el rango de la  matriz $[Df(q)]$ es 2.
+  En consecuencia se puede asumir que
+  \[
+     \det \begin{bmatrix} D_1f_1(q) & D_2f_1(q) \\
+     D_1f_2(q) & D_2f_2(q) \end{bmatrix} \neq 0
+  \]
+Considere la función
+\begin{align*}
+  F: U \times \mathbb{R} &\to \mathbb{R}^3 \\
+  (x,y,z) &\mapsto (f_1(x,y), f_2(x,y), f_3(x,y) + z)
+\end{align*}
+$F$ es diferenciable por ser cada una de sus componentes diferenciable.
+Observe que $F(U \times \{0\}) = f(U)$
+\[
+  [DF(q)] = \begin{bmatrix} D_1f_1(q) & D_2f_1(q) & 0 \\
+ D_1f_2(q) & D_2f_2(q) & 0 \\
+ D_1f_3(q) & D_2f_3(q) & 1 
+  \end{bmatrix} 
+\]
+Cuyo determinante es distinto de 0.
+En consecuencia, del teorema de la función inversa existen abiertos $L$,$M$ en
+$\mathbb{R}^3$ tales que $q \in L$ con $F(q) = f(q) \in M$ y $F:L \to M$ es una
+biyección diferenciable cuya inversa es también diferenciable.
+\begin{align*}
+  g: V &\to g(V) \\
+  r \in g^{-1}(W) &\subset V \\
+  q = h(r) &= f^{-1} \circ g(r) \\
+  \therefore f(q) &= g(r) \\
+  \therefore g(r) \in M
+\end{align*}
+Como $M$ es abierto en $\mathbb{R}^3$ y $g(r) \in M$. Siendo $g$ continua,
+existe un abierto $\hat{N}$ en $\mathbb{R}^2$ tal que $(\hat{N} \cap V)$
+\end{proof}
+\begin{definition}
+ Sean $S$ una superficie regular, $P \in S$. Dada una parametrización local de
+ $S$ en $P$
+ \[
+   f:U\subset \mathbb{R}^2 \to V \cap S
+ \]
+ $V \cap S$ se denomina vecindad coordenada de $P$.
+
+
+Sea $(x,y) = f^{-1}(P) \in U$, $(x,y)$ se denominan las coordenadas de $P$ bajo
+$f$. En general si $q \in V \cap S$ y $(a,b) = f^{-1}(q)$, a la pareja $(a,b)$
+se le denominan las coordenadas de $q$ bajo $f$.
+\end{definition}
+\begin{remark}
+  Si $f,g$ son dos parametrizaciones locales de $S$ en $P$ y $(x,y)$,
+  $(\hat{x},\hat{y})$ son las coordenadas de $P$ bajo $f$ y $g$ respectivamente,
+  se tiene que $h = g^{-1} \circ g$ es un difeomorfismo que transforma las
+  coordenadas de $P$ bajo $g$ a las coordenadas de $P$ bajo $f$.
+\end{remark}
+\begin{definition}
+ Sean $S$ una superficie regular, $V$ un abierto en $S$
+ \[
+   \phi: V \subset S \to \mathbb{R}^n
+ \]
+ Se dice que $\phi$ es diferenciable en $P \in V$ si dada una parametrización
+ local de $S$ en $P$.
+ \[
+   g:U \subset \mathbb{R}^2 \to S
+ \]
+ tal que $g(U) \subset V$, se tiene que:
+ \[
+   \phi \circ g: U \subset \mathbb{R}^2 \to \mathbb{R}^n
+ \]
+ es diferenciable en $g^{-1}(P)$
+\end{definition}
+\begin{remark}
+ La definición anterior no depende de la parametrización 
+
+ Suponga que $\hat{g}$ es otra parametrización de $S$ en $P$, sea $h = g^{-1}
+ \circ \hat{g}$. Así $\phi \circ \hat{g} = \phi \circ g \circ h$.
+ Se tiene entonces que $\phi \circ \hat{g}$ es diferenciable en
+ $\hat{g}^{-1}(P)$.
+
+\end{remark}
+\begin{definition}
+ Sean $S_1$ y $S_2$ superficies regulares,
+ \[
+   \phi: V \subset S_1 \to S_2
+ \]
+ con $V$ abierto en $S_1$. $\phi$ se dice diferenciable en $P \in V$ si dadas
+ parametrizaciones locales $g_1$,$g_2$ de $S_1$,$S_2$ en $P$ y $\phi(P)$
+ respectivamente, cada una definida en $U_1$, $U_2$ tales que $g_1(U_1) \subset
+ V$ y $\phi(g_1(U_1)) \subset g_2(U_2)$, se tiene que la función
+ $g_2^{-1} \circ g \circ g_1$ es diferenciable en $g_1^{-1}(P)$. 
+
+\end{definition}
+\begin{definition}
+ Dos superficies regulares se $S_1$, $S_2$ se dicen difeomorfas si existe una
+ biyección $\phi:S_1 \to S_2$ diferenciable cuya inversa es diferenciable.
+
+\end{definition}
+
+\begin{proposition}
+  Sea $S$ una superficie regular, $P \in S$. $f: U \subset \mathbb{R}^2 \to S$
+  una parametrización local de $S$ en $P$, entonces $f^{-1}:f(U) \t \mathbb{R}^2$  
+  Sea $g: V \subset \mathbb{R}^2$ es una función diferenciable
+
+\end{proposition}
+\begin{proof}
+  Sea $P \in f(U)$
+
+  Sea $g: V \subset \mathbb{R}^2 \to S$ una parametrización local se $S$ en $P$.
+  Sea $h = f^{-1} \circ g: g^{-1}(W) \to f^{-1}(W)$ con $W= f(U) \cap g(V)$ $h$
+  es en particular difrerenciable en $g^{-1}(P)$, así $f^{-1}$ diferencaible en
+  $P$.
+
+\end{proof}
+La proposición implica que siendo $S$ una superficie regular y $f$ una
+parametrización local de $S$ en $P$. $f: U \to f(U)$ es un difeomorfismo. Ésto
+muestra que toda superficie regular es localmente difeomorfa al plano.
+
+\begin{problem}
+  Sean $V \subset \mathbb{R}^3$ abierto, $S$ una superficie regular:
+  $f:V \to \mathbb{R}^n$ una función diferenciable.
+  Si $S \subset V$ demuestre que $f|_S$ es una función diferenciable.
+
+\end{problem}
+\begin{problem}
+  Demuestre que toda esfera es difeomorfa a toda elipsoide
+
+\end{problem}

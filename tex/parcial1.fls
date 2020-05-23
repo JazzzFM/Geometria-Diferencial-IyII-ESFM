@@ -1,0 +1,7 @@
+PWD /home/etrujillo/Documentos/ESFM/Geometria_Diferencial/tex
+INPUT /usr/share/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT parcial1.tex
+OUTPUT parcial1.log
+OUTPUT parcial1.pdf
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
